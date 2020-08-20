@@ -12,14 +12,12 @@ import {
 
 const Header = ({ fileName, fileId, showHeader }) => {
   async function deleteFile(id) {
-    const response = await api.delete(`/files/${id}`);
+    await api.delete(`/files/${id}`);
     toast.success(`${fileName} was successfully deleted.`);
-    console.log(response.status);
   }
 
   async function saveFileContentChanges(id) {
-    const response = await api.put(`/files/${id}`);
-    console.log(response.data);
+    await api.put(`/files/${id}`);
     toast.success(`Changes to ${fileName} were succesfully saved.`);
   }
 
