@@ -11,13 +11,13 @@ import {
 } from "./styles.js";
 
 const Header = ({ fileName, fileId, showHeader }) => {
-  async function deleteFile(id) {
-    await api.delete(`/files/${id}`);
+  async function deleteFile() {
+    await api.delete(`/files/${fileId}`);
     toast.success(`${fileName} was successfully deleted.`);
   }
 
-  async function saveFileContentChanges(id) {
-    await api.put(`/files/${id}`);
+  async function saveFileContentChanges() {
+    await api.put(`/files/${fileId}`);
     toast.success(`Changes to ${fileName} were succesfully saved.`);
   }
 
