@@ -14,6 +14,7 @@ import { Container, FileView, FileContentView, SideBar } from "./styles";
 const EditorView = () => {
   const [fileTree, setFileTree] = useState([]);
   const [fileName, setFileName] = useState("");
+  const [fileId, setFileId] = useState([]);
   const [fileContent, setFileContent] = useState("");
   const [showHeader, setShowHeader] = useState(false);
 
@@ -25,13 +26,14 @@ const EditorView = () => {
 
   useEffect(() => {
     loadFileTree();
-  }, []);
+  }, [fileTree]);
 
-  async function loadFileContent(fileId) {
-    const response = await api.get(`/files/${fileId}`);
+  async function loadFileContent(id) {
+    const response = await api.get(`/files/${id}`);
     const { name, content } = response.data;
 
     setFileName(name);
+    setFileId(id);
     setFileContent(content);
     setShowHeader(true);
   }
@@ -39,14 +41,14 @@ const EditorView = () => {
   return (
     <Container>
       <SideBar>
-        <TreeView loadFileContent={loadFileContent} fileTree={fileTree} />
+        <TreeView
+          loadFileContent={loadFileContent}
+          fileTree={fileTree}
+          loadFileTree={loadFileTree}
+        />
       </SideBar>
       <FileView>
-        <Header
-          fileName={fileName}
-          fileContent={fileContent}
-          showHeader={showHeader}
-        />
+        <Header fileName={fileName} fileId={fileId} showHeader={showHeader} />
         {fileContent ? (
           <FileContentView>
             <Editor

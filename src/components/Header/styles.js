@@ -29,6 +29,11 @@ export const SaveButton = styled.button`
   border: 1.5px solid #ffff;
   border-radius: 4px;
   padding: 0.1rem 0.2rem;
+
+  &:hover {
+    background-color: #fff;
+    color: #d77dba;
+  }
 `;
 
 export const DeleteButton = styled.button`
@@ -40,4 +45,9 @@ export const DeleteButton = styled.button`
   border: 1.5px solid #ffff;
   border-radius: 4px;
   padding: 0.1rem 0.2rem;
+
+  &:hover {
+    background-color: #fff;
+    color: #d77dba;
+  }
 `;

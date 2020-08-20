@@ -29,4 +29,10 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  div.Toastify__toast.Toastify__toast--success{
+    background : #d77dba;
+    font-weight: 500;
+    margin-top: 50px;
+  }
 `;
